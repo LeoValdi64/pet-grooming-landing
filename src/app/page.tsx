@@ -1,21 +1,41 @@
 "use client";
 
 import { useState } from "react";
+import {
+  Bath,
+  Scissors,
+  Sparkles,
+  Heart,
+  Dog,
+  Award,
+  Home,
+  Leaf,
+  Star,
+  Calendar,
+  Check,
+  PawPrint,
+  Phone,
+  MapPin,
+  Mail,
+  Facebook,
+  Instagram,
+  Twitter,
+} from "lucide-react";
 
 const services = [
-  { icon: "🛁", name: "Bath & Brush", desc: "Deep clean and brush out for a fresh, fluffy coat", price: "$35" },
-  { icon: "✂️", name: "Full Groom", desc: "Complete haircut, bath, nail trim, and ear cleaning", price: "$65" },
-  { icon: "💅", name: "Nail Trim", desc: "Safe and gentle nail clipping and filing", price: "$15" },
-  { icon: "🦷", name: "Teeth Cleaning", desc: "Fresh breath and healthy gums for your pet", price: "$25" },
-  { icon: "💆", name: "Spa Treatment", desc: "Luxury treatment with massage and aromatherapy", price: "$85" },
-  { icon: "🐕", name: "Puppy Package", desc: "Gentle introduction to grooming for young pets", price: "$45" },
+  { icon: Bath, name: "Bath & Brush", desc: "Deep clean and brush out for a fresh, fluffy coat", price: "$35" },
+  { icon: Scissors, name: "Full Groom", desc: "Complete haircut, bath, nail trim, and ear cleaning", price: "$65" },
+  { icon: Sparkles, name: "Nail Trim", desc: "Safe and gentle nail clipping and filing", price: "$15" },
+  { icon: Heart, name: "Teeth Cleaning", desc: "Fresh breath and healthy gums for your pet", price: "$25" },
+  { icon: Star, name: "Spa Treatment", desc: "Luxury treatment with massage and aromatherapy", price: "$85" },
+  { icon: Dog, name: "Puppy Package", desc: "Gentle introduction to grooming for young pets", price: "$45" },
 ];
 
 const trustBadges = [
-  { icon: "🏆", title: "Certified Groomers", desc: "All staff professionally trained and certified" },
-  { icon: "🏠", title: "Cage-Free", desc: "Open play environment for stress-free grooming" },
-  { icon: "🌿", title: "Natural Products", desc: "Eco-friendly, hypoallergenic shampoos and treatments" },
-  { icon: "⭐", title: "10+ Years", desc: "Trusted by thousands of pet parents since 2015" },
+  { icon: Award, title: "Certified Groomers", desc: "All staff professionally trained and certified" },
+  { icon: Home, title: "Cage-Free", desc: "Open play environment for stress-free grooming" },
+  { icon: Leaf, title: "Natural Products", desc: "Eco-friendly, hypoallergenic shampoos and treatments" },
+  { icon: Star, title: "10+ Years", desc: "Trusted by thousands of pet parents since 2015" },
 ];
 
 const pricingPlans = [
@@ -59,7 +79,7 @@ export default function Home() {
         </div>
         <div className="relative max-w-6xl mx-auto px-4 py-24 md:py-32">
           <div className="text-center">
-            <span className="text-6xl mb-4 block">🐾</span>
+            <PawPrint className="w-16 h-16 mx-auto mb-4" />
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Your Pet Deserves the <span className="text-yellow-300">Best Care</span>
             </h1>
@@ -68,9 +88,10 @@ export default function Home() {
             </p>
             <a
               href="#booking"
-              className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              Book Appointment 🗓️
+              Book Appointment
+              <Calendar className="w-5 h-5" />
             </a>
           </div>
         </div>
@@ -94,7 +115,7 @@ export default function Home() {
                   hoveredService === index ? "shadow-xl transform -translate-y-1" : ""
                 }`}
               >
-                <span className="text-4xl block mb-4">{service.icon}</span>
+                <service.icon className="w-10 h-10 text-teal-600 mb-4" />
                 <h3 className="text-xl font-bold text-gray-800 mb-2">{service.name}</h3>
                 <p className="text-gray-600 mb-4">{service.desc}</p>
                 <p className="text-2xl font-bold text-teal-600">{service.price}</p>
@@ -110,8 +131,8 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Why Choose Us</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {trustBadges.map((badge, index) => (
-              <div key={index} className="text-center">
-                <span className="text-5xl block mb-4">{badge.icon}</span>
+              <div key={index} className="text-center flex flex-col items-center">
+                <badge.icon className="w-12 h-12 text-teal-600 mb-4" />
                 <h3 className="text-lg font-bold text-gray-800 mb-2">{badge.title}</h3>
                 <p className="text-gray-600">{badge.desc}</p>
               </div>
@@ -149,7 +170,7 @@ export default function Home() {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <span>✓</span>
+                      <Check className={`w-5 h-5 ${plan.popular ? "text-yellow-300" : "text-teal-600"}`} />
                       <span className={plan.popular ? "text-teal-100" : "text-gray-600"}>{feature}</span>
                     </li>
                   ))}
@@ -181,7 +202,7 @@ export default function Home() {
                 key={i}
                 className="aspect-square bg-gradient-to-br from-teal-100 to-yellow-100 rounded-xl flex items-center justify-center"
               >
-                <span className="text-6xl opacity-50">🐾</span>
+                <PawPrint className="w-16 h-16 text-teal-300 opacity-50" />
               </div>
             ))}
           </div>
@@ -197,13 +218,13 @@ export default function Home() {
               <div key={index} className="bg-white rounded-2xl p-6 shadow-md">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400">⭐</span>
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4 italic">&quot;{testimonial.text}&quot;</p>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🐕</span>
+                    <Dog className="w-6 h-6 text-teal-600" />
                   </div>
                   <div>
                     <p className="font-bold text-gray-800">{testimonial.pet}</p>
@@ -228,11 +249,12 @@ export default function Home() {
               href="tel:+15557295683"
               className="flex items-center gap-3 bg-white text-orange-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-orange-100 transition-all duration-300"
             >
-              <span className="text-2xl">📞</span>
+              <Phone className="w-6 h-6" />
               (555) PAW-LOVE
             </a>
-            <button className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
-              Schedule Online 📅
+            <button className="flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+              Schedule Online
+              <Calendar className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -243,14 +265,23 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4">🐾 Pawfect Grooming</h3>
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <PawPrint className="w-7 h-7" />
+                Pawfect Grooming
+              </h3>
               <p className="text-gray-400 mb-4">
                 Professional pet grooming services with love and care. Your pet&apos;s happiness is our priority.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="text-2xl hover:text-teal-400 transition-colors">📘</a>
-                <a href="#" className="text-2xl hover:text-teal-400 transition-colors">📸</a>
-                <a href="#" className="text-2xl hover:text-teal-400 transition-colors">🐦</a>
+                <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-teal-400 transition-colors">
+                  <Facebook className="w-6 h-6" />
+                </a>
+                <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-teal-400 transition-colors">
+                  <Instagram className="w-6 h-6" />
+                </a>
+                <a href="#" aria-label="Twitter" className="text-gray-400 hover:text-teal-400 transition-colors">
+                  <Twitter className="w-6 h-6" />
+                </a>
               </div>
             </div>
             <div>
@@ -264,14 +295,26 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-4">Contact</h4>
               <ul className="text-gray-400 space-y-2">
-                <li>📍 123 Pet Lane, Petville</li>
-                <li>📞 (555) PAW-LOVE</li>
-                <li>✉️ woof@pawfect.com</li>
+                <li className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 shrink-0" />
+                  123 Pet Lane, Petville
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 shrink-0" />
+                  (555) PAW-LOVE
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 shrink-0" />
+                  woof@pawfect.com
+                </li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© 2026 Pawfect Grooming. All rights reserved. Made with 🐾</p>
+            <p className="flex items-center justify-center gap-1">
+              &copy; 2026 Pawfect Grooming. All rights reserved. Made with
+              <PawPrint className="w-4 h-4" />
+            </p>
           </div>
         </div>
       </footer>

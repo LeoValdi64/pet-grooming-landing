@@ -13,19 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pawfect Grooming | Professional Pet Care & Grooming Services",
-  description: "Premium pet grooming services with certified groomers. Bath & brush, full groom, nail trim, teeth cleaning, and spa treatments. Cage-free environment with natural products. Book your appointment today!",
+  title: "Pawfect Grooming | Professional Pet Grooming",
+  description: "Professional pet grooming with certified groomers. Bath, full groom, nail trim, teeth cleaning, and spa treatments in a cage-free environment.",
   keywords: "pet grooming, dog grooming, cat grooming, pet spa, nail trimming, teeth cleaning, professional groomers",
+  alternates: {
+    canonical: "https://pet-grooming-landing.vercel.app",
+  },
   openGraph: {
-    title: "Pawfect Grooming | Professional Pet Care & Grooming Services",
-    description: "Premium pet grooming services with certified groomers. Cage-free environment with natural products.",
+    title: "Pawfect Grooming | Professional Pet Grooming",
+    description: "Professional pet grooming with certified groomers. Cage-free environment with natural products.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pawfect Grooming | Professional Pet Care",
-    description: "Premium pet grooming services with certified groomers.",
+    title: "Pawfect Grooming | Professional Pet Grooming",
+    description: "Professional pet grooming with certified groomers.",
   },
   robots: {
     index: true,
@@ -41,6 +44,46 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Pawfect Grooming",
+              description:
+                "Professional pet grooming with certified groomers in a cage-free environment.",
+              url: "https://pet-grooming-landing.vercel.app",
+              telephone: "+15557295683",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "123 Pet Lane",
+                addressLocality: "Petville",
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  opens: "08:00",
+                  closes: "19:00",
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: "Saturday",
+                  opens: "09:00",
+                  closes: "18:00",
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: "Sunday",
+                  opens: "10:00",
+                  closes: "16:00",
+                },
+              ],
+              priceRange: "$15-$120",
+            }),
+          }}
+        />
         {children}
       </body>
     </html>
