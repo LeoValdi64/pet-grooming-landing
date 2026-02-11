@@ -9,6 +9,11 @@
   --color-cream-dark: #fef9c3;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
